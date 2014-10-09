@@ -14,12 +14,16 @@ public class Material {
 		return new SliderImpl();
 	}
 	
-	static Beeper getBeeper(){
-		return new BeeperImpl();
-	}
-	
 	static Display getDisplay(){
 		return new DisplayImpl();
+	}
+
+	public static Beeper getBeatBeeper() {
+		return new BeatBeeper();
+	}
+	
+	public static Beeper getBarBeeper() {
+		return new BarBeeper();
 	}
 
 }

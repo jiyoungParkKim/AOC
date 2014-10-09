@@ -3,8 +3,9 @@ package fr.istic.m2miage.aoc.ui;
 import fr.istic.m2miage.aoc.command.Command;
 
 public class TimerImpl implements Timer{
-	private java.util.Timer timer = new java.util.Timer();
+	private java.util.Timer timer;
 	public void activatePeriodically(Command c, int delayInSeconds) {
+		timer = new java.util.Timer();
 		timer.scheduleAtFixedRate(new java.util.TimerTask() {
 			@Override
 			public void run() {

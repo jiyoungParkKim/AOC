@@ -9,8 +9,7 @@ public class BarChangedCommand implements Command {
 		this.ctl = ctl;
 	}
 	public void execute() {
-		
-
+		ctl.barChanged();
 	}
 
 }

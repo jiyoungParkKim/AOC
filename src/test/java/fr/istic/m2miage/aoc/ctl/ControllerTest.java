@@ -3,17 +3,12 @@ package fr.istic.m2miage.aoc.ctl;
 import org.junit.Before;
 import org.junit.Test;
 
-import fr.istic.m2miage.aoc.me.Engine;
-import fr.istic.m2miage.aoc.me.EngineImpl;
-
 public class ControllerTest {
 	private Controller ctl;
-	private Engine eg;
 	
 	@Before
 	public void setup(){
-		eg = new EngineImpl();
-		ctl = new Controller(eg);
+		ctl = new Controller();
 	}
 
 	@Test

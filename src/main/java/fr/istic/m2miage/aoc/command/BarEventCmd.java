@@ -10,6 +10,6 @@ public class BarEventCmd implements Command{
 	}
 	
 	public void execute() {
-		ctl.barChanged();
+		ctl.handleBarEvent();
 	}
 }

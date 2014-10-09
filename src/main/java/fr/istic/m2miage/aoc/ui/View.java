@@ -4,7 +4,8 @@ package fr.istic.m2miage.aoc.ui;
 
 public class View {
 	// materials
-	private Beeper beeper;
+	private Beeper beatBeeper;
+	private Beeper barBeeper;
 	private Slider slider;
 	private Keybord keybord;
 	private Timer timer;
@@ -17,7 +18,8 @@ public class View {
 	private Button speedDown;
 	
 	public View(){
-		this.beeper = Material.getBeeper();
+		this.beatBeeper = Material.getBeatBeeper();
+		this.barBeeper = Material.getBarBeeper();
 		this.slider = Material.getSlider();
 		this.keybord = Material.getKeybord();
 		this.display = Material.getDisplay();
@@ -28,16 +30,20 @@ public class View {
 		this.speedDown = new SpeedDownButton();
 	}
 
+	public Beeper getBeatBeeper() {
+		return beatBeeper;
+	}
+	
+	public Beeper getBarBeeper() {
+		return barBeeper;
+	}
+
 	public LED getLed() {
 		return led;
 	}
 
 	public Display getDisplay() {
 		return display;
-	}
-
-	public Beeper getBeeper() {
-		return beeper;
 	}
 
 	public Slider getSlider() {
@@ -60,13 +66,8 @@ public class View {
 		return speedDown;
 	}
 
-	public void setBeeper(Beeper beeper) {
-		this.beeper = beeper;
-	}
 
-	public void setSlider(Slider slider) {
-		this.slider = slider;
-	}
+
 
 	public void setKeybord(Keybord keybord) {
 		this.keybord = keybord;
@@ -99,6 +100,8 @@ public class View {
 	public void setSpeedDown(Button speedDown) {
 		this.speedDown = speedDown;
 	}
+
+
 	
 	
 	

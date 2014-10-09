@@ -16,6 +16,7 @@ public class SliderImpl implements Slider{
 
 	@Override
 	public void moveSlider(double position) {
+		System.out.println("position is changed to "+ position);
 		this.position = position;
 		this.sliderChangedCmd.execute();
 		

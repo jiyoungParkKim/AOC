@@ -1,6 +1,6 @@
-package fr.istic.m2miage.aoc.me;
+package fr.istic.m2miage.aoc.command;
 
-import fr.istic.m2miage.aoc.command.Command;
+import fr.istic.m2miage.aoc.me.Engine;
 
 public class StopCommand implements Command {
 

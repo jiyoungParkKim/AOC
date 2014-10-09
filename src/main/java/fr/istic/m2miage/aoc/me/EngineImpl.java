@@ -1,6 +1,7 @@
 package fr.istic.m2miage.aoc.me;
 
 import fr.istic.m2miage.aoc.command.Command;
+import fr.istic.m2miage.aoc.command.StopCommand;
 import fr.istic.m2miage.aoc.command.TickCommand;
 import fr.istic.m2miage.aoc.ui.Timer;
 import fr.istic.m2miage.aoc.ui.TimerImpl;
@@ -74,9 +75,8 @@ public class EngineImpl implements Engine{
 		this.beatCmd.execute();
 		count++;
 		if((count % beatsPerBar) == 0){
-			
+			this.barCmd.execute();
 		}
-		
 	}
 	
 
