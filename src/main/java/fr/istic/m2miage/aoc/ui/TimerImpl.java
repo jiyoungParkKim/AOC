@@ -11,7 +11,7 @@ public class TimerImpl implements Timer{
 			public void run() {
 				c.execute();
 			}
-		}, 0, delayInSeconds * 1000);
+		}, 0, delayInSeconds);
 		
 	}
 

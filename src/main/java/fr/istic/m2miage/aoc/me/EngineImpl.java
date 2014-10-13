@@ -65,8 +65,9 @@ public class EngineImpl implements Engine{
 	public void setRunning(boolean isRunning) {
 		this.isRunning = isRunning;
 		if(isRunning){
+			count = 0;
 			Command cmd = new TickCommand(this);
-			timer.activatePeriodically(cmd, beat/60);
+			timer.activatePeriodically(cmd, 60000/getBeat());
 		}else{
 			timer.disable(new StopCommand(this));
 		}

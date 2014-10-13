@@ -9,7 +9,7 @@ public class Main {
 		// create controller
 		Controller ctl = new Controller();
 		// set beat & bar
-		ctl.setBeat(130);
+		ctl.moveSlider(0.2);
 		ctl.setBar(4);
 		// start metronome
 		ctl.getView().getStartBtn().click();
@@ -30,6 +30,15 @@ public class Main {
 		// stop metronome
 		ctl.getView().getStopBtn().click();
 		
+		ctl.setBar(3);
+		// start metronome
+		ctl.getView().getStartBtn().click();
+		
+		// wait 10 seconds
+		Thread.sleep(20000);
+		
+		// stop metronome
+		ctl.getView().getStopBtn().click();
 		
 	}
 }
