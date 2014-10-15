@@ -1,18 +1,19 @@
 package fr.istic.m2miage.aoc.ui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import fr.istic.m2miage.aoc.command.Command;
 
 public class TimerImpl implements Timer{
-	private java.util.Timer timer;
-	public void activatePeriodically(final Command c, int delayInSeconds) {
-		timer = new java.util.Timer();
-		timer.scheduleAtFixedRate(new java.util.TimerTask() {
-			@Override
-			public void run() {
-				c.execute();
-			}
-		}, 0, delayInSeconds);
-		
+	private javax.swing.Timer timer;
+	public void activatePeriodically(final Command c, final int delayInSeconds) {
+		timer = new javax.swing.Timer(delayInSeconds, new ActionListener() {
+		    public void actionPerformed(ActionEvent evt) {
+		    	c.execute();
+		    }    
+		});
+		timer.start();
 	}
 
 	public void activateAfterDelay(Command c, int delayInSeconds) {
@@ -21,7 +22,7 @@ public class TimerImpl implements Timer{
 	}
 
 	public void disable(Command c) {
-		timer.cancel();
+		timer.stop();
 		c.execute();
 	}
 
