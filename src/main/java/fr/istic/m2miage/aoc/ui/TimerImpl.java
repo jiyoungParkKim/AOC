@@ -4,7 +4,7 @@ import fr.istic.m2miage.aoc.command.Command;
 
 public class TimerImpl implements Timer{
 	private java.util.Timer timer;
-	public void activatePeriodically(Command c, int delayInSeconds) {
+	public void activatePeriodically(final Command c, int delayInSeconds) {
 		timer = new java.util.Timer();
 		timer.scheduleAtFixedRate(new java.util.TimerTask() {
 			@Override
