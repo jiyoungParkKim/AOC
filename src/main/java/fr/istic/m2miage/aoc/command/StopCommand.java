@@ -9,7 +9,7 @@ public class StopCommand implements Command {
 		this.eg = eg;
 	}
 	public void execute() {
-		
+		//eg.setRunning(false);
 	}
 
 }
