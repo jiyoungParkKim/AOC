@@ -15,7 +15,7 @@ public class StartButton extends javafx.scene.control.Button implements Button{
 			
 			@Override
 			public void handle(ActionEvent arg0) {
-				System.out.println("Hollo world");
+				System.out.println("Hello world");
 				ctl.start();
 			}
 		});

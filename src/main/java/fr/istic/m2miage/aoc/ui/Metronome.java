@@ -15,18 +15,23 @@ public class Metronome extends Application{
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setTitle("Hello world");
+		primaryStage.setTitle("metronome Park-Pereira");
 
 		ctl.moveSlider(0.2);
 		ctl.setBar(4);
 		
 		javafx.scene.control.Button startBtn = (javafx.scene.control.Button)ctl.getView().getStartBtn();
 		javafx.scene.control.Button stopBtn = (javafx.scene.control.Button)ctl.getView().getStopBtn();
+		javafx.scene.control.Button incBtn = (javafx.scene.control.Button)ctl.getView().getSpeedDown();
+		javafx.scene.control.Button decBtn = (javafx.scene.control.Button)ctl.getView().getSpeedUp();
 		
 		GridPane root = new GridPane();
 		root.setAlignment(Pos.CENTER);
-		root.add(startBtn, 0,1);
-		root.add(stopBtn, 1, 1);
+		root.add(startBtn, 0,2);
+		root.add(stopBtn, 1, 2);
+		root.add(incBtn, 2,2);
+		root.add(decBtn, 3, 2);
+		
 		primaryStage.setScene(new Scene(root, 300, 250));
 		primaryStage.show();
 		

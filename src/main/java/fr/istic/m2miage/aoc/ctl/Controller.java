@@ -7,6 +7,8 @@ import fr.istic.m2miage.aoc.command.BeatEventCommand;
 import fr.istic.m2miage.aoc.command.SliderChangedCmd;
 import fr.istic.m2miage.aoc.me.Engine;
 import fr.istic.m2miage.aoc.me.EngineImpl;
+import fr.istic.m2miage.aoc.ui.SpeedDownButton;
+import fr.istic.m2miage.aoc.ui.SpeedUpButton;
 import fr.istic.m2miage.aoc.ui.StartButton;
 import fr.istic.m2miage.aoc.ui.StopButton;
 import fr.istic.m2miage.aoc.ui.View;
@@ -16,14 +18,14 @@ import fr.istic.m2miage.aoc.ui.View;
  *
  */
 public class Controller {
-	
+
 	private Engine eg;
 	private View view;
-	
+
 	public Controller(){
 		this.eg = new EngineImpl();
 		this.view = new View();
-		
+
 		// beat init
 		this.eg.setBeatCmd(new BeatEventCommand(this));
 		this.eg.setBeatChangedCmd(new BeatChangedCommand(this));
@@ -32,15 +34,23 @@ public class Controller {
 		this.eg.setBarChangedCmd(new BarChangedCommand(this));
 		// slider init
 		this.view.getSlider().setSliderChangedCmd(new SliderChangedCmd(this));
-		
-		
+
+
+
 		// start button setting
 		this.view.setStartBtn(new StartButton(this));
 		// stop button
 		this.view.setStopBtn(new StopButton(this));
-		
+
+		// speed button setting
+		this.view.setSpeedDown(new SpeedDownButton(this));
+		// down button
+		this.view.setSpeedUp(new SpeedUpButton(this));
+
+
+
 	}
-	
+
 	// beat related methods	
 	public void setBeat(int beat){
 		this.eg.setBeat(beat);
@@ -53,7 +63,7 @@ public class Controller {
 		this.view.getBeatBeeper().beepClick();
 		this.view.getLed().flash();
 	}
-	
+
 	// bar related methods
 	public void setBar(int bar) {
 		this.eg.setBar(bar);
@@ -65,7 +75,7 @@ public class Controller {
 	public void handleBarEvent() {
 		this.view.getBarBeeper().beepClick();
 	}
-	
+
 	// slider related methods
 	public void moveSlider(double position) {
 		this.view.getSlider().moveSlider(position);
@@ -77,21 +87,32 @@ public class Controller {
 	}
 
 
-	
+
 	public View getView(){
 		return this.view;
 	}
 
 	public void start() {
 		this.eg.setRunning(true);
-		
+
 	}
 
+	public void incBar()
+	{
+		this.eg.incBar();
+	}
+
+	public void decBar()
+	{
+
+		this.eg.decBar();
+
+	}
 
 
 	public void stop() {
 		this.eg.setRunning(false);
-		
+
 	}
 
 
@@ -103,5 +124,5 @@ public class Controller {
 
 
 
-	
+
 }

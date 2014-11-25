@@ -26,8 +26,6 @@ public class View {
 		this.timer = Material.getTimer();
 		this.led = new LEDImpl();
 		
-		this.speedUp = new SpeedUpButton();
-		this.speedDown = new SpeedDownButton();
 	}
 
 	public Beeper getBeatBeeper() {

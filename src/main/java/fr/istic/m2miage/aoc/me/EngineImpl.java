@@ -46,6 +46,8 @@ public class EngineImpl implements Engine{
 	public int getBar() {
 		return beatsPerBar;
 	}
+	
+	
 	public void setBar(int beatsPerBar) {
 		this.beatsPerBar = beatsPerBar;
 		this.barChangedCmd.execute();
@@ -104,6 +106,24 @@ public class EngineImpl implements Engine{
 	}
 	public boolean getRunning() {
 		return isRunning;
+	}
+
+	@Override
+	public void incBar() {
+		this.beatsPerBar ++;
+		this.barChangedCmd.execute();		
+		
+	}
+
+	@Override
+	public void decBar() {
+		
+		if (this.beatsPerBar > 2)
+		{
+			this.beatsPerBar --;
+		}
+		
+		this.barChangedCmd.execute();
 	}
 
 }

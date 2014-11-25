@@ -14,6 +14,8 @@ public interface Engine {
 	public void setBar(int b);
 	public void setBarCmd(Command c);
 	public void setBarChangedCmd(Command c);
+	public void incBar();
+	public void decBar();
 	
 	
 	

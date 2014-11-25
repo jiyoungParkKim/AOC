@@ -1,10 +1,27 @@
 package fr.istic.m2miage.aoc.ui;
 
-public class SpeedDownButton implements Button {
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import fr.istic.m2miage.aoc.ctl.Controller;
 
-	public void click() {
-		// TODO Auto-generated method stub
+public class SpeedDownButton extends javafx.scene.control.Button implements Button  {
 
+
+	private Controller ctl;
+
+	public SpeedDownButton(Controller ctl){
+
+		this.ctl = ctl;
+		this.setText("DEC");
+		this.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				ctl.decBar();
+			}
+		});
 	}
-
+	public void click() {
+		ctl.decBar();
+	}
 }
