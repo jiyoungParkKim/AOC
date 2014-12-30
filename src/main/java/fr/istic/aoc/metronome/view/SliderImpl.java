@@ -22,6 +22,11 @@ public class SliderImpl implements Slider, FxComponentConverter{
 		return this;
 	}
 
+	public SliderImpl setValue(double value) {
+		fxSlider.setValue(value);
+		return this;
+	}
+
 	@Override
 	public SliderImpl setFxComponent(Object fxComponent) {
 		this.fxSlider = (javafx.scene.control.Slider)fxComponent;
@@ -75,7 +80,7 @@ public class SliderImpl implements Slider, FxComponentConverter{
 	/////////// observer ////////////
 	
 	@Override
-	public Slider registerObserver(Command sliderChangedCmd) {
+	public SliderImpl registerObserver(Command sliderChangedCmd) {
 		this.sliderChangedCmd = sliderChangedCmd;
 		return this;
 	}

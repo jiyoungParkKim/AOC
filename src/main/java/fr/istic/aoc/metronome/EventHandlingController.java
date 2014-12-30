@@ -15,10 +15,13 @@ import fr.istic.aoc.metronome.command.SpeedDownCmd;
 import fr.istic.aoc.metronome.command.SpeedUpCmd;
 import fr.istic.aoc.metronome.command.StartCmd;
 import fr.istic.aoc.metronome.command.StopCmd;
+import fr.istic.aoc.metronome.command.TickCmd;
 import fr.istic.aoc.metronome.command.TurnOffLEDCmd;
 import fr.istic.aoc.metronome.material.Material;
 import fr.istic.aoc.metronome.observer.MEObserver;
 import fr.istic.aoc.metronome.observer.SliderObserver;
+import fr.istic.aoc.metronome.utils.PropertyReader;
+import fr.istic.aoc.metronome.utils.Utils;
 import fr.istic.aoc.metronome.view.ButtonImpl;
 import fr.istic.aoc.metronome.view.DisplayImpl;
 import fr.istic.aoc.metronome.view.LEDImpl;
@@ -47,48 +50,70 @@ public class EventHandlingController implements MEObserver, SliderObserver{
 	@FXML private Slider beatsSlider;
 	@FXML private Slider barSlider;
 	
-	private View view;
-	private ME me;
+	View view;
+	ME me;
+	PropertyReader props;
 	
-	private Color BeatsLEDColor = Color.DEEPSKYBLUE;
-	private Color BarLEDColor = Color.PINK;
-	private double BeatsSliderMaxValue = 250.0;
-	private double BarSliderMaxValue = 7.0;
-	
+	Color beatsLEDColor = Color.DEEPSKYBLUE;
+	Color barLEDColor = Color.PINK;
+	double beatsSliderMaxValue = 250.0;
+	double barSliderMaxValue = 7.0;
+
 	/**
 	 * Constructs a instance of EventHandlingController by creating the ME instance   
 	 *  using the specified observer commands.
 	 * @throws ConfigurationException 
 	 */
-	public EventHandlingController() throws ConfigurationException{
-		me = MEImpl.build()
-		  .registerObserver(new BeatsChangedCmd(this))
-		  .registerObserver(new BarChangedCmd(this))
-		  .registerObserver(new BeatEventCmd(this)) 
-		  .registerObserver(new BarEventCmd(this));		
+	public EventHandlingController(){
+		try {
+			me = MEImpl.build()
+			  .registerObserver(new BeatsChangedCmd(this))
+			  .registerObserver(new BarChangedCmd(this))
+			  .registerObserver(new BeatEventCmd(this)) 
+			  .registerObserver(new BarEventCmd(this));	
+			me.registerObserver(new TickCmd(me));
+			props = PropertyReader.getReader("config.properties");
+			if(props != null){
+				beatsLEDColor = props.getColor("beatsLEDColor");
+				barLEDColor = props.getColor("barLEDColor");
+				beatsSliderMaxValue = props.getDouble("beatsSliderMaxValue");
+				barSliderMaxValue = props.getDouble("barSliderMaxValue");
+			}
+		} catch (ConfigurationException e) {
+			System.out.println(e.getMessage());
+			System.exit(0);
+		}
 	}
 
 	/**
 	 * Initialize a instance after loading the FXML
 	 * @throws ConfigurationException 
 	 */
-	@FXML private void initialize() throws ConfigurationException{
-		
-		view = View.build()
-		  // Texts
-		  .setBeatsText(DisplayImpl.build().setFxComponent(beats))
-		  .setBarText(DisplayImpl.build().setFxComponent(bar))
-		  // LEDs
-		  .setBeatsLED(LEDImpl.build().setFxComponent(led1).setFillColor(BeatsLEDColor).registerObserver(new TurnOffLEDCmd(led1)))
-		  .setBarLED(LEDImpl.build().setFxComponent(led2).setFillColor(BarLEDColor).registerObserver(new TurnOffLEDCmd(led2)))
-		  // sliders
-		  .setBeatsSlider(SliderImpl.build().setFxComponent(beatsSlider).setMaxSliderValue(BeatsSliderMaxValue).registerObserver(new BeatsSliderChangedCmd()))
-		  .setBarSlider(SliderImpl.build().setFxComponent(barSlider).setMaxSliderValue(BarSliderMaxValue).registerObserver(new BarSliderChangedCmd()))
-		  // buttons
-	      .setStartButton(ButtonImpl.build().setFxComponent(startBtn).setCommand(new StartCmd(this))) 
-	      .setStopButton(ButtonImpl.build().setFxComponent(stopBtn).setCommand(new StopCmd(this))) 
-	      .setSpeedUpButton(ButtonImpl.build().setFxComponent(speedUpBtn).setCommand(new SpeedUpCmd(this))) 
-	      .setSpeedDownButton(ButtonImpl.build().setFxComponent(speedDownBtn).setCommand(new SpeedDownCmd(this)));
+	@FXML void initialize(){
+		try {
+			beats.setText(props.getInteger("defaultBeats") + " BPM");
+			bar.setText(props.getInteger("defaultBar") + " beats");
+			
+			view = View.build()
+			  // Texts
+			  .setBeatsText(DisplayImpl.build().setFxComponent(beats))
+			  .setBarText(DisplayImpl.build().setFxComponent(bar))
+			  .setTempoMarking(DisplayImpl.build().setFxComponent(tempoMarking))
+			  // LEDs
+			  .setBeatsLED(LEDImpl.build().setFxComponent(led1).setFillColor(beatsLEDColor).registerObserver(new TurnOffLEDCmd(led1)))
+			  .setBarLED(LEDImpl.build().setFxComponent(led2).setFillColor(barLEDColor).registerObserver(new TurnOffLEDCmd(led2)))
+			  // sliders
+			  .setBeatsSlider(SliderImpl.build().setFxComponent(beatsSlider).setMaxSliderValue(beatsSliderMaxValue).setValue(props.getInteger("defaultBeats")).registerObserver(new BeatsSliderChangedCmd()))
+			  .setBarSlider(SliderImpl.build().setFxComponent(barSlider).setMaxSliderValue(barSliderMaxValue).setValue(props.getInteger("defaultBar")).registerObserver(new BarSliderChangedCmd()))
+			  // buttons
+		      .setStartButton(ButtonImpl.build().setFxComponent(startBtn).setCommand(new StartCmd(this))) 
+		      .setStopButton(ButtonImpl.build().setFxComponent(stopBtn).setCommand(new StopCmd(this))) 
+		      .setSpeedUpButton(ButtonImpl.build().setFxComponent(speedUpBtn).setCommand(new SpeedUpCmd(this))) 
+		      .setSpeedDownButton(ButtonImpl.build().setFxComponent(speedDownBtn).setCommand(new SpeedDownCmd(this)));
+		} catch (ConfigurationException e) {
+			System.out.println(e.getMessage());
+			System.exit(0);
+		}
 	}
 	
 	@Override
@@ -126,6 +151,7 @@ public class EventHandlingController implements MEObserver, SliderObserver{
 	@Override
 	public void beatsChanged() {
 		view.getBeatsText().setText(me.getBeats() + " BPM");
+		view.getTempoMarking().setText(Utils.getTempoMarking(me.getBeats()));
 	}
 
 	@Override

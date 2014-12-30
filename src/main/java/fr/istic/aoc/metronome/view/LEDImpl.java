@@ -17,7 +17,7 @@ public class LEDImpl implements LED, FxComponentConverter{
 	public static LEDImpl build(){
 		return new LEDImpl();
 	}
-	private LEDImpl(){
+	public LEDImpl(){
 		timer = new TimerImpl();
 	}
 	@Override

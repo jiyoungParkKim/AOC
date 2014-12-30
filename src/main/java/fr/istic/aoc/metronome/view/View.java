@@ -10,7 +10,6 @@ public class View {
 	private Slider beatsSlider;
 	private Slider barSlider;
 	
-	
 	private Button startButton;
 	private Button stopButton;
 	private Button speedUpButton;
@@ -18,14 +17,12 @@ public class View {
 	
 	private Display beatsText;
 	private Display barText;
+	private Display tempoMarking;
 	
 	public static View build(){
 		return new View();
 	}
 	private View(){}
-	
-	
-	
 	
 	public Display getBeatsText() {
 		return beatsText;
@@ -108,6 +105,11 @@ public class View {
 		this.speedDownButton = subject;
 		return this;
 	}
-
-	
+	public Display getTempoMarking() {
+		return tempoMarking;
+	}
+	public View setTempoMarking(Display tempoMarking) {
+		this.tempoMarking = tempoMarking;
+		return this;
+	}
 }

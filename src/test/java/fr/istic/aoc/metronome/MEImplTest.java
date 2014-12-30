@@ -31,11 +31,4 @@ public class MEImplTest {
 		  .registerObserver(new BeatEventCmd(controller)) 
 		  .registerObserver(new BarEventCmd(controller));
 	}
-	
-	@Test
-	public void setRunningTest(){
-		
-	}
-	
-	
 }

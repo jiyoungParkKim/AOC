@@ -1,5 +1,6 @@
 package fr.istic.aoc.metronome;
 
+import fr.istic.aoc.metronome.command.Command;
 import fr.istic.aoc.metronome.observer.Subject;
 
 /**
@@ -51,5 +52,7 @@ public interface ME extends Subject{
 	 * If the isRunning is true then executes BeatEventCmd and barEventCmd
 	 */
 	void tick();
+	
+	boolean isRunning();
 
 }

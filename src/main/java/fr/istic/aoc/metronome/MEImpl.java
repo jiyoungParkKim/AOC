@@ -8,9 +8,9 @@ import fr.istic.aoc.metronome.command.BarEventCmd;
 import fr.istic.aoc.metronome.command.BeatEventCmd;
 import fr.istic.aoc.metronome.command.BeatsChangedCmd;
 import fr.istic.aoc.metronome.command.Command;
-import fr.istic.aoc.metronome.command.TickCmd;
 import fr.istic.aoc.metronome.material.Timer;
 import fr.istic.aoc.metronome.material.TimerImpl;
+import fr.istic.aoc.metronome.utils.PropertyReader;
 
 /**
  * Concrete Metronome Engine class and it has a Subject role to the {@link fr.istic.aoc.metronome.EventHandlingController} class
@@ -18,7 +18,7 @@ import fr.istic.aoc.metronome.material.TimerImpl;
  *
  */
 public class MEImpl implements ME {
-	
+	private PropertyReader props;
 	private int beats = 140;// Default beats per minute
 	private int bar = 4;// Default measure
 	/**
@@ -41,7 +41,11 @@ public class MEImpl implements ME {
 	
 	private MEImpl(){
 		timer = new TimerImpl();
-		tickCmd = new TickCmd(this);
+		props = PropertyReader.getReader("config.properties");
+		if(props != null){
+			beats = props.getInteger("defaultBeats");
+			bar = props.getInteger("defaultBar");
+		}
 	}
 	
 	@Override
@@ -100,8 +104,7 @@ public class MEImpl implements ME {
 		return beats;
 	}
 
-	////////////// observer /////////////
-	
+	////////////// observer /////////////	
 	@Override
 	public MEImpl registerObserver(Command observer) throws ConfigurationException{
 		setObserver(Introspector.decapitalize(observer.getClass().getSimpleName()), observer);
@@ -120,21 +123,6 @@ public class MEImpl implements ME {
 	 * @throws ConfigurationException 
 	 */
 	private void setObserver(String observerName, Command observer) throws ConfigurationException {
-//		try {
-//			Field field = this.getClass().getDeclaredField(observerName);
-//			field.setAccessible(true);
-//			field.set(this, observer);
-//		} catch (NoSuchFieldException | SecurityException e) {
-//			System.out.println("You can't register " + observerName + " because it is not vailed observer of this class." );
-//			System.exit(0);
-//		} catch (IllegalArgumentException e) {
-//			System.out.println("You can't register " + observerName + " because it is not vailed observer of this class." );
-//			System.exit(0);
-//		} catch (IllegalAccessException e) {
-//			System.out.println("You can't register " + observerName + " because it is not vailed observer of this class." );
-//			System.exit(0);
-//		}
-		
 		try {
 			Field field = this.getClass().getDeclaredField(observerName);
 			field.setAccessible(true);
@@ -143,4 +131,9 @@ public class MEImpl implements ME {
 			throw new ConfigurationException("You can't register " + observerName + " because it is not vailed observer of this class.");
 		} 
 	}
+
+	public boolean isRunning() {
+		return isRunning;
+	}
+	/////////// getter ////////////
 }
