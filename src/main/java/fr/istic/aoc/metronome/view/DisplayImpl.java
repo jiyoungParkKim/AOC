@@ -2,6 +2,12 @@ package fr.istic.aoc.metronome.view;
 
 import javafx.scene.text.Text;
 
+/**
+ * Implementation of the Display interface containing a java-fx component and a command object 
+ * which will be executed later. 
+ * @author Jiyoung Park
+ *
+ */
 public class DisplayImpl implements Display, FxComponentConverter{
 	
 	private Text fxText;
@@ -18,45 +24,12 @@ public class DisplayImpl implements Display, FxComponentConverter{
 		return this;
 	}
 
+	/**
+	 * Sets the given text to the fxText field.
+	 */
 	@Override
 	public void setText(String txt) {
 		fxText.setText(txt);
 	}
-	
-//	private Text bar;
-//	private Text tempoMarking;
-//	
-//	public static final int BEATS_LED=1;
-//	public static final int BARS_LED=2;
-//	
-//	public static DisplayImpl buildDisplay(){
-//		DisplayImpl d = new DisplayImpl();
-//		return d;
-//	}
-//	
-//	private DisplayImpl(){}
-//	
-//	public DisplayImpl setBeats(Text beats) {
-//		this.beats = beats;
-//		return this;
-//	}
-//	
-//	public DisplayImpl setBar(Text bar) {
-//		this.bar = bar;
-//		return this;
-//	}
-//
-//	public DisplayImpl setTempoMarking(Text tempoMarking) {
-//		this.tempoMarking = tempoMarking;
-//		return this;
-//	}
-//	
-//	public void displayBeats(int beats){
-//		this.beats.setText(beats + " BPM");
-//	}
-//
-//	public void displayBar(int bar) {
-//		this.bar.setText(bar + " beats");
-//	}
 
 }

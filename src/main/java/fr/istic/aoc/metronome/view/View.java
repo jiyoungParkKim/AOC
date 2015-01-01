@@ -2,6 +2,11 @@ package fr.istic.aoc.metronome.view;
 
 import fr.istic.aoc.metronome.observer.Subject;
 
+/**
+ * This class contains all UI components of the metronome.
+ * @author Jiyoung Park
+ *
+ */
 public class View {
 	
 	private Subject beatsLED;

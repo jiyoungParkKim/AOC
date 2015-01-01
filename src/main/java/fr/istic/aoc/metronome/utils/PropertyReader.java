@@ -17,6 +17,12 @@ public class PropertyReader {
 	
 	private static Map<String, PropertyReader> propertyReaders = new HashMap<String, PropertyReader>();
 	private static PropertyReader propertyReader;
+	
+	/**
+	 * Return the PropertyReader by given resource path which used as a key.
+	 * @param path
+	 * @return
+	 */
 	public static PropertyReader getReader(String path){
 		if(propertyReaders.get(path) == null){
 			PropertyReader pr = new PropertyReader();
@@ -31,6 +37,11 @@ public class PropertyReader {
 	}
 	
 	private Properties props;
+	/**
+	 * Loads the properties by given resource path.
+	 * @param path
+	 * @return
+	 */
 	public Properties load(String path){
 		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(path);
 		props = new Properties();
@@ -43,10 +54,20 @@ public class PropertyReader {
 		}
 	}
 	
+	/**
+	 * Returns the existing String type data.
+	 * @param key
+	 * @return
+	 */
 	public String getString(String key) {
 		return (String) props.get(key);
 	}
 	
+	/**
+	 * Returns the existing Double type data.
+	 * @param key
+	 * @return
+	 */
 	public Double getDouble(String key) {
 		if(props.get(key) != null){
 			return Double.valueOf((String)props.get(key));
@@ -54,6 +75,11 @@ public class PropertyReader {
 		return null;
 	}
 	
+	/**
+	 * Returns the existing Integer type data.
+	 * @param key
+	 * @return
+	 */
 	public Integer getInteger(String key){
 		if(props.get(key) != null){
 			return Integer.valueOf((String)props.get(key));
@@ -61,6 +87,11 @@ public class PropertyReader {
 		return null;
 	}
 
+	/**
+	 * Returns the existing java-fx Color type data.
+	 * @param key
+	 * @return
+	 */
 	public Color getColor(String key) {
 		if(props.get(key) != null){
 			return Color.valueOf((String)props.get(key));

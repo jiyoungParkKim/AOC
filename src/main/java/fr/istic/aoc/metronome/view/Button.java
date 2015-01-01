@@ -4,7 +4,7 @@ import fr.istic.aoc.metronome.command.Command;
 
 
 /**
- * This interface acts as a Invoker of the Command Pattern. 
+ * Button interface
  * @author Jiyoung Park
  *
  */

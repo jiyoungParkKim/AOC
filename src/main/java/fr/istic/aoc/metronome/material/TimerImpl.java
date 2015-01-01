@@ -14,6 +14,14 @@ public class TimerImpl implements Timer{
 		timeline = new Timeline();
 	}
 
+	/**
+	 * Active the given command periodically.
+	 * 
+	 * @param c
+	 * Command object
+	 * @param delayInmillis
+	 * Millisecond to indicate the delay time
+	 */
 	@Override
 	public void activatePeriodically(Command c, int delayInMillis) {
 		if(timeline.getStatus() == Status.RUNNING) timeline.stop();
@@ -24,6 +32,14 @@ public class TimerImpl implements Timer{
 		timeline.play();
 	}
 
+	/**
+	 * Active the given command after specified delay time.
+	 * 
+	 * @param c
+	 * Command object
+	 * @param delayInmillis
+	 * Millisecond to indicate the delay time
+	 */
 	@Override
 	public void activateAfterDelay(Command c, int delayInMillis) {
 		if(timeline != null) timeline.stop();
@@ -33,6 +49,9 @@ public class TimerImpl implements Timer{
 		timeline.play();
 	}
 
+	/**
+	 * Stop this timer
+	 */
 	@Override
 	public void disable(Command c) {
 		timeline.stop();

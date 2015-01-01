@@ -3,7 +3,8 @@ package fr.istic.aoc.metronome.view;
 import fr.istic.aoc.metronome.observer.Subject;
 
 /**
- * This interface acts as a subject.
+ * Slider interface for show the position of the BPM or the Measure. 
+ * This interface extends Subject interface for acting as a subject.
  * @author Jiyoung Park
  *
  */

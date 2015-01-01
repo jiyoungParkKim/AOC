@@ -1,5 +1,10 @@
 package fr.istic.aoc.metronome.observer;
 
+/**
+ * Observer interface to observe the slider objects.
+ * @author Jiyoung Park
+ *
+ */
 public interface SliderObserver {
 	
 	/**

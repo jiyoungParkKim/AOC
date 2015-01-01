@@ -9,10 +9,21 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+/**
+ * Implementation of the Beeper interface.
+ * @author Jiyoung Park
+ *
+ */
 public class BeeperImpl implements Beeper{
 	URL url = null;
     Clip clip;
     AudioInputStream audioIn;
+    
+    /**
+     * Constructor of this class. 
+     * @param path
+     * AudioIn resource path
+     */
 	public BeeperImpl(String path){
 		try {
 			audioIn = AudioSystem.getAudioInputStream(this.getClass().getClassLoader().getResource(path));

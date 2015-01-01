@@ -6,7 +6,12 @@ import fr.istic.aoc.metronome.command.Command;
 import fr.istic.aoc.metronome.material.Timer;
 import fr.istic.aoc.metronome.material.TimerImpl;
 import fr.istic.aoc.metronome.observer.Subject;
-
+/**
+ * Implementation of the LED interface containing a java-fx component and a command object 
+ * which will be executed later. 
+ * @author Jiyoung Park
+ *
+ */
 public class LEDImpl implements LED, FxComponentConverter{
 	
 	private Circle fxCircle;

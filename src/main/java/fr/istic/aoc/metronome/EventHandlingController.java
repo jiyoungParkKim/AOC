@@ -85,7 +85,7 @@ public class EventHandlingController implements MEObserver, SliderObserver{
 	}
 
 	/**
-	 * Initialize a instance after loading the FXML
+	 * Performs the actual initialization work after loading the FXML
 	 */
 	@FXML void initialize(){
 		try {
@@ -114,55 +114,81 @@ public class EventHandlingController implements MEObserver, SliderObserver{
 		}
 	}
 	
+	/**
+	 * Starts the Metronome.
+	 */
 	@Override
 	public void start() {
 		me.setRunning(true);
 	}
 	
+	/**
+	 * Stops the Metronome.
+	 */
 	@Override
 	public void stop() {
 		me.setRunning(false);
 	}
 	
+	/**
+	 * This method called by BeatsSliderChangedCmd Command of this class when the beats slider is changed.
+	 */
 	@Override
 	public void beatsSliderChanged() {
 		me.setBeats((int)Math.round(view.getBeatsSlider().getPosition() * 250));
 	}
-	
+	/**
+	 * This method called by BeatsSliderChangedCmd Command of this class when the bar slider is changed.
+	 */
 	@Override
 	public void barSliderChanged() {
 		me.setBar((int)Math.round(view.getBarSlider().getPosition() * 7));
 	}
-	
+	/**
+	 * This method is called by speed up event.
+	 */
 	@Override
 	public void speedUp() {
 		view.getBeatsSlider().speedUp();
 		me.speedUp();
 	}
-	
+	/**
+	 * This method is called by speed down event.
+	 */
 	@Override
 	public void speedDown() {
 		view.getBeatsSlider().speedDown();
 		me.speedDown();
 	}
 
+	/**
+	 * This method is called by BeatsChangedCmd command
+	 */
 	@Override
 	public void beatsChanged() {
 		view.getBeatsText().setText(me.getBeats() + " BPM");
 		view.getTempoMarking().setText(Utils.getTempoMarking(me.getBeats()));
 	}
 
+	/**
+	 * This method is called by BarChangedCmd command
+	 */
 	@Override
 	public void barChanged() {
 		view.getBarText().setText(me.getBar() + " beats");
 	}
 	
+	/**
+	 * Handles the Beat Event. Flashes the beats led and beep
+	 */
 	@Override
 	public void handleBeatEvent() {
 		Material.getBeatBeeper().beep();
 		view.getBeatsLED().flash();
 	}
-	
+	/**
+	 * Handles the Bar Event. Flashes the beats led and beep
+	 */
 	@Override
 	public void handleBarEvent() {
 		Material.getBarBeeper().beep();

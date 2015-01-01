@@ -4,6 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import fr.istic.aoc.metronome.command.Command;
 
+/**
+ * Implementation of Button interface. This class executes the resisted command when the containing java-fx button is pressed.
+ * @author Jiyoung Park
+ *
+ */
 public class ButtonImpl implements Button, FxComponentConverter{
 	private Command cmd;
 	
@@ -28,6 +33,9 @@ public class ButtonImpl implements Button, FxComponentConverter{
 		return this;
 	}
 
+	/**
+	 * Perform registered command object's execute method.
+	 */
 	@Override
 	public void click() {
 		cmd.execute();
