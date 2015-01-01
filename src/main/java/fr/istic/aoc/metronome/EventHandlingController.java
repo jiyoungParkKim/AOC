@@ -62,7 +62,6 @@ public class EventHandlingController implements MEObserver, SliderObserver{
 	/**
 	 * Constructs a instance of EventHandlingController by creating the ME instance   
 	 *  using the specified observer commands.
-	 * @throws ConfigurationException 
 	 */
 	public EventHandlingController(){
 		try {
@@ -87,7 +86,6 @@ public class EventHandlingController implements MEObserver, SliderObserver{
 
 	/**
 	 * Initialize a instance after loading the FXML
-	 * @throws ConfigurationException 
 	 */
 	@FXML void initialize(){
 		try {
@@ -186,5 +184,4 @@ public class EventHandlingController implements MEObserver, SliderObserver{
 			barSliderChanged();
 		}
 	}
-
 }
