@@ -1,4 +1,4 @@
-package fr.istic.aoc.metronome.material;
+package fr.istic.aoc.metronome.view;
 
 import fr.istic.aoc.metronome.command.Command;
 

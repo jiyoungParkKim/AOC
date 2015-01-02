@@ -10,7 +10,6 @@ import fr.istic.aoc.metronome.command.SpeedUpCmd;
 import fr.istic.aoc.metronome.command.StartCmd;
 import fr.istic.aoc.metronome.command.StopCmd;
 import fr.istic.aoc.metronome.command.TurnOffLEDCmd;
-import fr.istic.aoc.metronome.material.Material;
 import fr.istic.aoc.metronome.view.ButtonImpl;
 import fr.istic.aoc.metronome.view.DisplayImpl;
 import fr.istic.aoc.metronome.view.LEDImpl;
@@ -104,14 +103,14 @@ public class MockEventHandlingController extends EventHandlingController{
 	@Override
 	public void handleBeatEvent() {
 		System.out.println("Beep!");
-		Material.getBeatBeeper().beep();
+		View.getBeatBeeper().beep();
 		view.getBeatsLED().flash();
 	}
 	
 	@Override
 	public void handleBarEvent() {
 		System.out.println("Bar!");
-		Material.getBarBeeper().beep();
+		View.getBarBeeper().beep();
 		view.getBarLED().flash();
 	}
 }

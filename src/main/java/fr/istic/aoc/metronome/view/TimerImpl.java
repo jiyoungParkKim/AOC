@@ -1,4 +1,4 @@
-package fr.istic.aoc.metronome.material;
+package fr.istic.aoc.metronome.view;
 
 import javafx.animation.Animation;
 import javafx.animation.Animation.Status;

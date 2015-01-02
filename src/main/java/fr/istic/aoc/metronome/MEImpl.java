@@ -8,9 +8,9 @@ import fr.istic.aoc.metronome.command.BarEventCmd;
 import fr.istic.aoc.metronome.command.BeatEventCmd;
 import fr.istic.aoc.metronome.command.BeatsChangedCmd;
 import fr.istic.aoc.metronome.command.Command;
-import fr.istic.aoc.metronome.material.Timer;
-import fr.istic.aoc.metronome.material.TimerImpl;
 import fr.istic.aoc.metronome.utils.PropertyReader;
+import fr.istic.aoc.metronome.view.Timer;
+import fr.istic.aoc.metronome.view.TimerImpl;
 
 /**
  * Concrete Metronome Engine class and it has a Subject role to the {@link fr.istic.aoc.metronome.EventHandlingController} class

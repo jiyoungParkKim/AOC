@@ -17,7 +17,6 @@ import fr.istic.aoc.metronome.command.StartCmd;
 import fr.istic.aoc.metronome.command.StopCmd;
 import fr.istic.aoc.metronome.command.TickCmd;
 import fr.istic.aoc.metronome.command.TurnOffLEDCmd;
-import fr.istic.aoc.metronome.material.Material;
 import fr.istic.aoc.metronome.observer.MEObserver;
 import fr.istic.aoc.metronome.observer.SliderObserver;
 import fr.istic.aoc.metronome.utils.PropertyReader;
@@ -183,7 +182,7 @@ public class EventHandlingController implements MEObserver, SliderObserver{
 	 */
 	@Override
 	public void handleBeatEvent() {
-		Material.getBeatBeeper().beep();
+		View.getBeatBeeper().beep();
 		view.getBeatsLED().flash();
 	}
 	/**
@@ -191,7 +190,7 @@ public class EventHandlingController implements MEObserver, SliderObserver{
 	 */
 	@Override
 	public void handleBarEvent() {
-		Material.getBarBeeper().beep();
+		View.getBarBeeper().beep();
 		view.getBarLED().flash();
 	}
 	

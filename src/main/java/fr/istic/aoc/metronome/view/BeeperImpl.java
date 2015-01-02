@@ -1,4 +1,4 @@
-package fr.istic.aoc.metronome.material;
+package fr.istic.aoc.metronome.view;
 
 import java.io.IOException;
 import java.net.URL;

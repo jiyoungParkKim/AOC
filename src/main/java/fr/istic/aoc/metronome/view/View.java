@@ -23,7 +23,16 @@ public class View {
 	private Display beatsText;
 	private Display barText;
 	private Display tempoMarking;
+	private static Beeper beatBeeper = new BeeperImpl("PingLow.wav");
+	private static Beeper barBeeper = new BeeperImpl("PingHi.wav");
 	
+	public static Beeper getBeatBeeper() {
+		return beatBeeper;
+	}
+	
+	public static Beeper getBarBeeper() {
+		return barBeeper;
+	}
 	public static View build(){
 		return new View();
 	}

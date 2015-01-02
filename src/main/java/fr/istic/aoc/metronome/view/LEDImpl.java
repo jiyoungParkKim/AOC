@@ -3,8 +3,6 @@ package fr.istic.aoc.metronome.view;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import fr.istic.aoc.metronome.command.Command;
-import fr.istic.aoc.metronome.material.Timer;
-import fr.istic.aoc.metronome.material.TimerImpl;
 import fr.istic.aoc.metronome.observer.Subject;
 /**
  * Implementation of the LED interface containing a java-fx component and a command object 
