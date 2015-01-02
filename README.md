@@ -5,4 +5,4 @@ METROLOME
 
 ## screen shots : 
 
-![example image](metronome.png "metronome")
+![example image](./metronome.png "metronome")
