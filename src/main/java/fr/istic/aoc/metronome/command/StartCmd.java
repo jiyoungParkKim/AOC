@@ -1,20 +1,26 @@
+/**
+ * 
+ */
 package fr.istic.aoc.metronome.command;
 
-import fr.istic.aoc.metronome.observer.MEObserver;
+import fr.istic.aoc.metronome.Controller;
+
 /**
- * Implementation of the Command interface for starting the Metronome
  * @author Jiyoung Park
  *
  */
-public class StartCmd extends AbstractObserverCmd {
-
-	public StartCmd(MEObserver ctl) {
-		super(ctl);
+public class StartCmd implements Command {
+	private Controller controller;
+	public StartCmd(Controller controller) {
+		this.controller = controller;
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.istic.aoc.metronome.command.Command#execute()
+	 */
 	@Override
 	public void execute() {
-		ctl.start();
+		controller.start();
 	}
 
 }

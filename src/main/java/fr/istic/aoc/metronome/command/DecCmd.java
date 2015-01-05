@@ -2,10 +2,10 @@ package fr.istic.aoc.metronome.command;
 
 import fr.istic.aoc.metronome.Controller;
 
-public class StopCmd implements Command {
-	
+public class DecCmd implements Command {
+
 	private Controller controller;
-	public StopCmd(Controller controller) {
+	public DecCmd(Controller controller) {
 		this.controller = controller;
 	}
 
@@ -14,7 +14,7 @@ public class StopCmd implements Command {
 	 */
 	@Override
 	public void execute() {
-		controller.stop();
+		controller.dec();
 	}
 
 }

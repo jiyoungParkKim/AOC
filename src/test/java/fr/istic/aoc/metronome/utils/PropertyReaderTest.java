@@ -21,10 +21,10 @@ public class PropertyReaderTest {
 //	beatsLEDColor=DEEPSKYBLUE
 //	barLEDColor=PINK
 
-	private PropertyReader propReader;
+	private PropertiesReader propReader;
 	@Before
 	public void setup() throws IOException {
-		propReader = PropertyReader.getReader("config.properties");
+		propReader = PropertiesReader.getReader("config.properties");
 		Assert.assertNotNull(propReader);
 	}
 
@@ -37,7 +37,7 @@ public class PropertyReaderTest {
 
 	@Test
 	public void testGetInteger() {
-		Assert.assertEquals(4, propReader.getInteger("defaultBar"), 0.0);
+		Assert.assertEquals(4, propReader.getDouble("defaultBar"), 0.0);
 	}
 
 	@Test

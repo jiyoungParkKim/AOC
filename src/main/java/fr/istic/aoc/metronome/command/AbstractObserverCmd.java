@@ -3,7 +3,7 @@ package fr.istic.aoc.metronome.command;
 import fr.istic.aoc.metronome.observer.MEObserver;
 
 /**
- * A abstract command object that is parameterized with the observer necessary to perform the target's method.
+ * Abstract command that is parameterized with the observer necessary to perform the target's method.
  * @author Jiyoung Park
  *
  */

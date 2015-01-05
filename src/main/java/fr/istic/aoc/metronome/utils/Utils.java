@@ -1,8 +1,19 @@
 package fr.istic.aoc.metronome.utils;
 
+
+/**
+ * Utility class
+ * @author Jiyoung Park
+ *
+ */
 public class Utils {
 	
-	public static String getTempoMarking(int bpm){
+	/**
+	 * Returns the tempo name by the bpm
+	 * @param bpm
+	 * @return
+	 */
+	public static String getTempoName(int bpm){
 		String tempoName;
 		
 		if(bpm <= 24){

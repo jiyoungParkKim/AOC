@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="266.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.istic.aoc.metronome.EventHandlingController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="266.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.istic.aoc.metronome.FXComponentsInitializer">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1b1b1b" height="113.0" layoutX="135.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="123.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1b1b1b" height="40.0" layoutX="8.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="251.0" />

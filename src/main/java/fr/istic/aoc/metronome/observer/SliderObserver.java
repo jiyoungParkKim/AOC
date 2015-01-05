@@ -5,20 +5,19 @@ package fr.istic.aoc.metronome.observer;
  * @author Jiyoung Park
  *
  */
-public interface SliderObserver {
+public interface SliderObserver extends Observer{
+	/**
+	 * Calls ME's setBPM method to :
+	 *   1. change the bpm value
+	 *   2. executes registered BpmChangedCmd (as a Observer) to signal the change to Controller
+	 *   3. change timer's duration if the 'running' status is true
+	 */
+	void bpmSliderChanged();
 	
 	/**
-	 * Calls ME's setBeats method to :
-	 *   1. change the beats value
-	 *   2. executes registered BeatsChangedCmd (as a Observer) to signal the change to Controller
-	 *   3. change timer's duration if the 'isRunning' status is true
+	 * Calls ME's setMeasure method to :
+	 *   1. change the measure value
+	 *   2. executes registered MeasureChangedCmd (as a Observer) to signal the change to Controller
 	 */
-	void beatsSliderChanged();
-	
-	/**
-	 * Calls ME's setBeats method to :
-	 *   1. change the bar value
-	 *   2. executes registered BarChangedCmd (as a Observer) to signal the change to Controller
-	 */
-	void barSliderChanged();
+	void measureSliderChanged();
 }
