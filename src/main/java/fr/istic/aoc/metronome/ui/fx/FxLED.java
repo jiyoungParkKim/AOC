@@ -11,7 +11,7 @@ public class FxLED implements LED {
 	private javafx.scene.shape.Circle component;
 	private Command cmd;
 	private  Color color;
-	private Timer timer = new TimerImpl();
+	private Timer timer = TimerImpl.getInstance();
 	
 	public FxLED(javafx.scene.shape.Circle component, Color color){
 		this.component = component;

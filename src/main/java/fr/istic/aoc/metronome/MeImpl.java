@@ -19,7 +19,7 @@ public class MeImpl implements ME{
 	private MeasureEventCmd measureEventCmd;
 	private Command tickCmd;
 	
-	private Timer timer = new TimerImpl();
+	private Timer timer = TimerImpl.getInstance();
 	
 	private boolean running;
 	private int bpm = 140;
@@ -51,6 +51,7 @@ public class MeImpl implements ME{
 		this.bpm = bpm;
 		bpmChangedCmd.execute();
 		if(running){
+			timer.disable(null);
 			timer.activatePeriodically(tickCmd, 60000/bpm);
 		}
 	}

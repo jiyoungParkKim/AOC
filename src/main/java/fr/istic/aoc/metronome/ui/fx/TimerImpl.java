@@ -1,7 +1,8 @@
 package fr.istic.aoc.metronome.ui.fx;
 
+import java.util.Iterator;
+
 import javafx.animation.Animation;
-import javafx.animation.Animation.Status;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
@@ -14,7 +15,19 @@ import fr.istic.aoc.metronome.ui.Timer;
  *
  */
 public class TimerImpl implements Timer{
-	private Timeline timeline;
+	private static Timeline timeline;
+	private static Timer timer;
+	
+	public static Timer getInstance(){
+		if(timer == null){
+			timer = new TimerImpl();
+		}
+		return timer;
+	}
+	
+	private TimerImpl(){
+		timeline = new Timeline();
+	}
 
 	/**
 	 * Active the given command periodically.
@@ -25,12 +38,10 @@ public class TimerImpl implements Timer{
 	 * Millisecond to indicate the delay time
 	 */
 	@Override
-	public void activatePeriodically(Command c, int delayInMillis) {
-		if(timeline != null && timeline.getStatus() == Status.RUNNING){
-			timeline.stop();
-		}
-		timeline = new Timeline(new KeyFrame(
+	public synchronized void  activatePeriodically(Command c, int delayInMillis) {
+		timeline.getKeyFrames().add(new KeyFrame(
 		        Duration.millis(delayInMillis),
+		        c.getClass().getSimpleName(),
 		        ae -> c.execute()));
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
@@ -45,11 +56,8 @@ public class TimerImpl implements Timer{
 	 * Millisecond to indicate the delay time
 	 */
 	@Override
-	public void activateAfterDelay(Command c, int delayInMillis) {
-		if(timeline != null){
-			timeline.stop();
-		}
-		timeline = new Timeline(new KeyFrame(
+	public synchronized void activateAfterDelay(Command c, int delayInMillis) {
+		timeline.getKeyFrames().add(new KeyFrame(
 		        Duration.millis(delayInMillis),
 		        ae -> c.execute()));
 		timeline.play();
@@ -59,12 +67,16 @@ public class TimerImpl implements Timer{
 	 * Stop this timer
 	 */
 	@Override
-	public void disable(Command c) {
-		if(timeline != null){
-			timeline.stop();
-		}
+	public synchronized void disable(Command c) {
+		
+		Iterator<KeyFrame> it = timeline.getKeyFrames().iterator();
+		timeline.getKeyFrames().removeAll(timeline.getKeyFrames());
+		
+		System.out.println(timeline.getKeyFrames().size());
+		timeline.stop();
 		if(c != null)
 		c.execute();
 	}
-
+	
+	
 }
