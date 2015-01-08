@@ -68,11 +68,7 @@ public class TimerImpl implements Timer{
 	 */
 	@Override
 	public synchronized void disable(Command c) {
-		
-		Iterator<KeyFrame> it = timeline.getKeyFrames().iterator();
 		timeline.getKeyFrames().removeAll(timeline.getKeyFrames());
-		
-		System.out.println(timeline.getKeyFrames().size());
 		timeline.stop();
 		if(c != null)
 		c.execute();
