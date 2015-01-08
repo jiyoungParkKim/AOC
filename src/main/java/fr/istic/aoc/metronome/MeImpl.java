@@ -43,7 +43,7 @@ public class MeImpl implements ME{
 			if((++count % measure) == 0){
 				measureEventCmd.execute();
 			}
-		}		
+		}
 	}
 	
 	@Override
@@ -74,12 +74,12 @@ public class MeImpl implements ME{
 	
 	@Override
 	public void dec() {
-		bpm--;
+		setBPM(--bpm);
 	}
 	
 	@Override
 	public void inc() {
-		bpm++;
+		setBPM(++bpm);
 	}
 	
 	//////////////////////////////////////// Observer /////////////////////

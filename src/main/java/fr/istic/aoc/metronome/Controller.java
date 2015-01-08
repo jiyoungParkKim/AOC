@@ -83,13 +83,11 @@ public class Controller implements MEObserver, SliderObserver{
 	@Override
 	public void inc() {
 		me.inc();
-		view.getBpmSlider().setPosition(me.getBPM());
 	}
 	
 	@Override
 	public void dec() {
 		me.dec();
-		view.getBpmSlider().setPosition(me.getBPM());
 	}
 	
 	@Override

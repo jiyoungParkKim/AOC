@@ -9,9 +9,12 @@ import fr.istic.aoc.metronome.ui.Slider;
 public class FxSlider implements Slider {
 	private Command cmd;
 	private double position;
+	private double max;
+	private javafx.scene.control.Slider fxSlider;
 	
 	public FxSlider(javafx.scene.control.Slider fxSlider){
-		double max = fxSlider.getMax();
+		this.fxSlider = fxSlider;
+		max = fxSlider.getMax();
 		position = fxSlider.getValue() / max;
 		fxSlider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
@@ -40,6 +43,8 @@ public class FxSlider implements Slider {
 
 	@Override
 	public void setPosition(int position) {
+		System.out.println(position * max);
+		fxSlider.setValue(position * max);
 		this.position = position;
 	}
 
