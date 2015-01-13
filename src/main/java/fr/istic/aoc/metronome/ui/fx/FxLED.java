@@ -16,6 +16,7 @@ public class FxLED implements LED {
 	public FxLED(javafx.scene.shape.Circle component, Color color){
 		this.component = component;
 		this.color = color;
+		this.cmd = new TurnOffCmd();
 	}
 
 	@Override
@@ -32,6 +33,15 @@ public class FxLED implements LED {
 	public void flash() {
 		component.setFill(color);
 		timer.activatePeriodically(cmd, 100);
+	}
+	
+	/// inner command
+	
+	private class TurnOffCmd implements Command{
+		@Override
+		public void execute() {
+			component.setFill(Color.BLACK);
+		}
 	}
 
 }
