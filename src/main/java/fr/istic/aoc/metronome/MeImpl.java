@@ -3,21 +3,17 @@ package fr.istic.aoc.metronome;
 import java.beans.Introspector;
 import java.lang.reflect.Field;
 
-import fr.istic.aoc.metronome.command.BpmChangedCmd;
-import fr.istic.aoc.metronome.command.BpmEventCmd;
 import fr.istic.aoc.metronome.command.Command;
-import fr.istic.aoc.metronome.command.MeasureChangedCmd;
-import fr.istic.aoc.metronome.command.MeasureEventCmd;
 import fr.istic.aoc.metronome.material.Horloge;
 import fr.istic.aoc.metronome.material.Material;
 
 public class MeImpl implements ME{
 	
-	private BpmChangedCmd bpmChangedCmd;
-	private MeasureChangedCmd measureChangedCmd;
-	private BpmEventCmd bpmEventCmd;
-	private MeasureEventCmd measureEventCmd;
-	private Command tickCmd;
+	private Command bpmChangedCmd;
+	private Command measureChangedCmd;
+	private Command bpmEventCmd;
+	private Command measureEventCmd;
+	private Command tickCmd = new TickCmd();
 	
 	private Horloge horloge = Material.getHorloge();
 	
@@ -117,4 +113,12 @@ public class MeImpl implements ME{
 		return running;
 	}
 	
+	////////////////
+	
+	private class TickCmd implements Command{
+		@Override
+		public void execute() {
+			tick();
+		}
+	}
 }

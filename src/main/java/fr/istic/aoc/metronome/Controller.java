@@ -10,7 +10,6 @@ import fr.istic.aoc.metronome.command.MeasureEventCmd;
 import fr.istic.aoc.metronome.command.MeasureSliderChangedCmd;
 import fr.istic.aoc.metronome.command.StartCmd;
 import fr.istic.aoc.metronome.command.StopCmd;
-import fr.istic.aoc.metronome.command.TickCmd;
 import fr.istic.aoc.metronome.observer.MEObserver;
 import fr.istic.aoc.metronome.observer.SliderObserver;
 import fr.istic.aoc.metronome.ui.BeeperImpl;
@@ -37,7 +36,6 @@ public class Controller implements MEObserver, SliderObserver{
 			me.register(new MeasureChangedCmd(this));
 			me.register(new BpmEventCmd(this));
 			me.register(new MeasureEventCmd(this));
-			me.register(new TickCmd(me));
 			
 			view.getStartBtn().setCommand(new StartCmd(this));
 			view.getStopBtn().setCommand(new StopCmd(this));
