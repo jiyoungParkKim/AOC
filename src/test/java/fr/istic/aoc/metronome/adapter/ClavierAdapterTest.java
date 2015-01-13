@@ -1,5 +1,9 @@
 package fr.istic.aoc.metronome.adapter;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -61,15 +65,28 @@ public class ClavierAdapterTest {
 		Assert.assertEquals(defaultBpm, ctl.getMe().getBPM());
 		// increase by 1 bpm
 		incBtn.click();
-		Assert.assertEquals(defaultBpm+1, ctl.getMe().getBPM());		
-		Assert.assertEquals(defaultBpm+1, ctl.getView().getBpmSlider().getPosition()*250, 0);		
+		
+		
+		// we need wait to obtain the right value
+		Timeline timeline = new Timeline();
+		timeline.getKeyFrames().add(new KeyFrame(
+		        Duration.millis(200),
+		        ae -> testBpm(defaultBpm+1)));
+		timeline.play();
+	
 		
 		fr.istic.aoc.metronome.ui.Button decBtn = new ButtonAdapter(ButtonType.INC, fxBtn);
 		decBtn.setCommand(new DecCmd(ctl));
 		// decrease by 1 bpm
 		decBtn.click();
+		
 		Assert.assertEquals(defaultBpm, ctl.getMe().getBPM());
 		Assert.assertEquals(defaultBpm, ctl.getView().getBpmSlider().getPosition()*250, 0);
+	}
+	
+	private void testBpm(int expectedBpm){
+		Assert.assertEquals(expectedBpm, ctl.getMe().getBPM());		
+		Assert.assertEquals(expectedBpm, ctl.getView().getBpmSlider().getPosition()*250, 0);	
 	}
 
 }

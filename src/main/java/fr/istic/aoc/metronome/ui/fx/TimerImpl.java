@@ -1,7 +1,5 @@
 package fr.istic.aoc.metronome.ui.fx;
 
-import java.util.Iterator;
-
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

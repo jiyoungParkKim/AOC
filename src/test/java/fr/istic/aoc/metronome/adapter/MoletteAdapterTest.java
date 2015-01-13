@@ -36,6 +36,9 @@ public class MoletteAdapterTest {
 		
 		fxSlider.setValue(150.0);
 		Assert.assertEquals(150.0 / beatsSliderMaxValue, madapter.getPosition(SliderType.BPM.getValue()), 0.0);
+		
+		fxSlider.setValue(defaultBeats);
 	}
+
 
 }
