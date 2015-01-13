@@ -7,10 +7,10 @@ import fr.istic.aoc.metronome.observer.MEObserver;
  * change of the ME implementation's beats value.  
  * @author Jiyoung Park
  */
-public class BpmEventCmd extends AbstractObserverCmd {
-
-	public BpmEventCmd(MEObserver ctl) {
-		super(ctl);
+public class BpmEventCmd implements Command{
+	private MEObserver ctl;
+	public BpmEventCmd(MEObserver controller) {
+		this.ctl = controller;
 	}
 
 	@Override

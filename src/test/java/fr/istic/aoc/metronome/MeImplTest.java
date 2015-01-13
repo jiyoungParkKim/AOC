@@ -7,7 +7,6 @@ import fr.istic.aoc.metronome.command.BpmEventCmd;
 import fr.istic.aoc.metronome.command.MeasureChangedCmd;
 import fr.istic.aoc.metronome.command.MeasureEventCmd;
 import fr.istic.aoc.metronome.command.StartCmd;
-import fr.istic.aoc.metronome.command.TickCmd;
 
 public class MeImplTest extends ControllerTest{
 
@@ -28,7 +27,6 @@ public class MeImplTest extends ControllerTest{
 		me.register(new MeasureChangedCmd(ctl));
 		me.register(new BpmEventCmd(ctl));
 		me.register(new MeasureEventCmd(ctl));
-		me.register(new TickCmd(me));
 		
 		
 	}
