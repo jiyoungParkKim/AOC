@@ -28,6 +28,10 @@ public class MeImpl implements ME{
 	
 	@Override
 	public void setRunning(boolean b) {
+		if(running){
+			horloge.disable(null);
+			count = 0;
+		}
 		running = b;
 		if(running){
 			count = 0;
