@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="266.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.istic.aoc.metronome.FXComponentsInitializer">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1b1b1b" height="113.0" layoutX="135.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="123.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1b1b1b" height="40.0" layoutX="8.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="251.0" />
+      <Circle fx:id="led1" fill="#171717" layoutX="69.0" layoutY="27.0" radius="16.0" stroke="#141414" strokeType="INSIDE" />
+      <Circle fx:id="led2" fill="#171717" layoutX="196.0" layoutY="28.0" radius="16.0" stroke="#171717" strokeType="INSIDE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1b1b1b" height="113.0" layoutX="7.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="123.0" />
+      <Text fill="#f2f0f0" layoutX="47.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo" />
+      <Text fill="#f2f0f0" layoutX="149.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beats/measure" />
+      <Text fx:id="beats" fill="#f7a20afc" layoutX="31.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120 BPM" wrappingWidth="75.91943359375">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text fx:id="bar" fill="#f7a20afc" layoutX="161.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4 beats" wrappingWidth="75.91943359375">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Slider fx:id="barSlider" blockIncrement="1.0" layoutX="149.0" layoutY="128.0" majorTickUnit="2.0" max="7.0" min="2.0" minorTickCount="1" prefHeight="15.0" prefWidth="98.0" showTickLabels="true" showTickMarks="true" value="4.0" />
+      <Button fx:id="startBtn" layoutX="40.0" layoutY="174.0" mnemonicParsing="false" text="Start" />
+      <Button fx:id="stopBtn" layoutX="95.0" layoutY="174.0" mnemonicParsing="false" text="Stop" />
+      <Button fx:id="speedUpBtn" layoutX="147.0" layoutY="174.0" mnemonicParsing="false" text="INC" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="speedDownBtn" layoutX="192.0" layoutY="174.0" mnemonicParsing="false" text="DEC" />
+      <Text fx:id="tempoMarking" fill="#f7a20afc" layoutX="33.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allegro" textAlignment="CENTER" wrappingWidth="75.91943359375">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Text>
+      <Slider fx:id="beatsSlider" layoutX="22.0" layoutY="128.0" majorTickUnit="100.0" max="250.0" min="10.0" minorTickCount="4" prefHeight="15.0" prefWidth="98.0" showTickLabels="true" showTickMarks="true" value="140.0" />
+   </children>
+</Pane>
