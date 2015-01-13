@@ -2,9 +2,10 @@ package fr.istic.aoc.metronome.command;
 
 import fr.istic.aoc.metronome.observer.MEObserver;
 
-public class MeasureEventCmd extends AbstractObserverCmd{
+public class MeasureEventCmd implements Command {
+	private MEObserver ctl;
 	public MeasureEventCmd(MEObserver ctl) {
-		super(ctl);
+		this.ctl = ctl;
 	}
 
 	@Override

@@ -7,9 +7,10 @@ import fr.istic.aoc.metronome.observer.MEObserver;
  * change of the ME implementation's bar value.  
  * @author Jiyoung Park
  */
-public class MeasureChangedCmd extends AbstractObserverCmd{
+public class MeasureChangedCmd implements Command {
+	private MEObserver ctl;
 	public MeasureChangedCmd(MEObserver ctl) {
-		super(ctl);
+		this.ctl = ctl;
 	}
 
 	@Override

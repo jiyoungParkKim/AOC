@@ -1,6 +1,6 @@
 package fr.istic.aoc.metronome.observer;
 
-public interface MEObserver {
+public interface MEObserver extends Observer{
 	/**
 	 * This method is called whenever the beats field of the MEImpl class is changed
 	 * to update the bpm value on the UI component 

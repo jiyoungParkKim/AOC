@@ -1,7 +1,5 @@
 package fr.istic.aoc.metronome.ui.fx;
 
-import java.util.Iterator;
-
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -14,18 +12,18 @@ import fr.istic.aoc.metronome.ui.Timer;
  * @author Jiyoung Park
  *
  */
-public class TimerImpl implements Timer{
+public class FxTimer implements Timer{
 	private static Timeline timeline;
 	private static Timer timer;
 	
 	public static Timer getInstance(){
 		if(timer == null){
-			timer = new TimerImpl();
+			timer = new FxTimer();
 		}
 		return timer;
 	}
 	
-	private TimerImpl(){
+	private FxTimer(){
 		timeline = new Timeline();
 	}
 
