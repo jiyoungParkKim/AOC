@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>259</x>
+      <y>679</y>
+      <w>56</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Command
+--
+execute()
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>364</x>
+      <y>385</y>
+      <w>98</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>ME
+--
+getBPM():int
+setBPM(bpm:int)
+getMeasure():int
+setMeasure(m:int)
+inc()
+dec()
+tick()
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>630</x>
+      <y>161</y>
+      <w>56</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>Observer
+--
+bg=red
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>406</x>
+      <y>287</y>
+      <w>77</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fg=gray</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;60.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>595</x>
+      <y>224</y>
+      <w>126</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>MEObserver
+--
+bpmChanged()
+measureChanged()
+start()
+stop()
+handleBpmEvent()
+handleMeasureEvent()
+inc() 
+dec()
+bg=red
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>679</x>
+      <y>427</y>
+      <w>161</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>Controller
+--
+-view:View
+-me:ME
+--
+bpmSliderChanged()
+measureSliderChanged()
+start()
+stop()
+inc()
+dec()
+bpmChanged()
+measureChanged()
+handleBpmEvent()
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>735</x>
+      <y>224</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>SliderObserver
+--
+bpmSliderChanged()
+measureSliderchanged()()
+bg=red
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>868</x>
+      <y>427</y>
+      <w>147</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>FXComponentInitializer
+--
+--
+initialize()
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>833</x>
+      <y>441</y>
+      <w>49</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+fg=gray</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>532</y>
+      <w>161</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>MeImpl
+--
+-view:View
+-me:ME
+--
+bpmSliderChanged()
+measureSliderChanged()
+start()
+stop()
+inc()
+dec()
+bpmChanged()
+measureChanged()
+handleBpmEvent()
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>938</x>
+      <y>546</y>
+      <w>70</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>home.fxml
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>945</x>
+      <y>462</y>
+      <w>21</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>959</x>
+      <y>588</y>
+      <w>84</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>Main
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>987</x>
+      <y>567</y>
+      <w>21</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>357</x>
+      <y>770</y>
+      <w>98</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>/AbstractObserver/
+--
+-ctl:MEObserver
+--
+/execute()/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>287</x>
+      <y>686</y>
+      <w>133</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+fg=gray</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;30.0;170.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>847</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>BpmChangedCmd
+--
+execute()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>413</x>
+      <y>847</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>MeasureChangedCmd
+--
+execute()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>896</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>BpmEventCmd
+--
+execute()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>413</x>
+      <y>896</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>MeasureEventCmd
+--
+execute()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>329</x>
+      <y>812</y>
+      <w>91</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fg=gray</panel_attributes>
+    <additional_attributes>110.0;10.0;110.0;40.0;10.0;40.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>399</x>
+      <y>812</y>
+      <w>98</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fg=gray</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;120.0;40.0;120.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>84</x>
+      <y>847</y>
+      <w>91</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>StartCmd
+--
+-ctl:Controller
+--
+execute()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>84</x>
+      <y>903</y>
+      <w>91</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>StopCmd
+--
+-ctl:Controller
+--
+execute()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>84</x>
+      <y>959</y>
+      <w>91</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>IncCmd
+--
+-ctl:Controller
+--
+execute()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>84</x>
+      <y>1015</y>
+      <w>91</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>DecCmd
+--
+-ctl:Controller
+--
+execute()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>182</x>
+      <y>847</y>
+      <w>91</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>TickCmd
+--
+-me:ME
+--
+execute()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>182</x>
+      <y>903</y>
+      <w>91</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>TurnOffLEDCmd
+--
+-led:Circle
+--
+execute()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>119</x>
+      <y>686</y>
+      <w>175</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+fg=gray</panel_attributes>
+    <additional_attributes>230.0;10.0;10.0;30.0;10.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>119</x>
+      <y>686</y>
+      <w>175</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+fg=gray</panel_attributes>
+    <additional_attributes>230.0;10.0;10.0;30.0;10.0;190.0;140.0;190.0;140.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>77</x>
+      <y>658</y>
+      <w>469</w>
+      <h>413</h>
+    </coordinates>
+    <panel_attributes>command
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>441</x>
+      <y>224</y>
+      <w>126</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Subject
+--
+register(c:Command)
+unregister(c:Command)
+bg=red
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>651</x>
+      <y>196</y>
+      <w>21</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fg=gray
+group=3</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>686</x>
+      <y>182</y>
+      <w>133</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fg=gray
+group=3</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0;170.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>392</x>
+      <y>147</y>
+      <w>490</w>
+      <h>217</h>
+    </coordinates>
+    <panel_attributes>observer
+fg=blue
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>406</x>
+      <y>497</y>
+      <w>21</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>616</x>
+      <y>875</y>
+      <w>42</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Beeper
+--
+beep()
+bg=black
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>567</x>
+      <y>959</y>
+      <w>140</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>BeeperImpl
+--
+-clip:Clip
+-audioIn:AudioInputStream
+--
+beep()
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>931</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+fg=gray
+group=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>847</x>
+      <y>588</y>
+      <w>84</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>View
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>721</x>
+      <y>959</y>
+      <w>175</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>FxButton
+--
+-cmd:Command
+-fxBtn:javafx.scene.control.Button
+--
++click()
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>735</x>
+      <y>875</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Button
+--
+setCommand(c:Command)
+click()
+bg=black
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>798</x>
+      <y>931</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+fg=gray
+group=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>931</x>
+      <y>875</y>
+      <w>98</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Display
+--
+setText(t:String)
+bg=black
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>959</y>
+      <w>147</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>FxText
+--
+-fxTxt:javafx.scene.text.TXT
+--
++setText(t:String)
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>973</x>
+      <y>931</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+fg=gray
+group=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>623</x>
+      <y>679</y>
+      <w>42</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>LED
+--
+flash()
+bg=black
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>567</x>
+      <y>763</y>
+      <w>168</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>FxLED
+--
+-fxLed:javafx.scene.shape.Circle
+-cmd:Command
+-color:Color
+-timer:Timer
+--
++flash()
++register(c:Command)
++unregister(c:Command)
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>637</x>
+      <y>735</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>777</x>
+      <y>679</y>
+      <w>112</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Slider
+--
+getPosition():double
+setPosition(p:double)
+bg=black
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>742</x>
+      <y>763</y>
+      <w>182</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>FxSlider
+--
+-fxSlider:javafx.scene.control.Slider
+-cmd:Command
+-position:double
+-max:double
+--
++flash()
++register(c:Command)
++unregister(c:Command)
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>826</x>
+      <y>735</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>882</x>
+      <y>616</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+fg=gray</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>896</x>
+      <y>462</y>
+      <w>21</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+fg=gray</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>756</x>
+      <y>546</y>
+      <w>105</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+fg=gray</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;130.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>560</x>
+      <y>658</y>
+      <w>504</w>
+      <h>364</h>
+    </coordinates>
+    <panel_attributes>ui
+fg=blue
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>651</y>
+      <w>21</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+fg=gray</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>287</y>
+      <w>133</w>
+      <h>413</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+fg=gray</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;60.0;70.0;490.0;170.0;490.0;170.0;570.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>287</y>
+      <w>322</w>
+      <h>413</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+fg=gray</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;60.0;70.0;490.0;440.0;490.0;440.0;570.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>287</x>
+      <y>126</y>
+      <w>630</w>
+      <h>462</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+fg=gray</panel_attributes>
+    <additional_attributes>710.0;430.0;710.0;390.0;880.0;390.0;880.0;10.0;10.0;10.0;10.0;640.0;70.0;640.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>679</x>
+      <y>336</y>
+      <w>63</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+fg=gray</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;70.0;70.0;70.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>721</x>
+      <y>287</y>
+      <w>84</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+fg=gray</panel_attributes>
+    <additional_attributes>100.0;10.0;100.0;140.0;10.0;140.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>546</y>
+      <w>224</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+fg=gray</panel_attributes>
+    <additional_attributes>300.0;10.0;300.0;80.0;10.0;80.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>413</x>
+      <y>392</y>
+      <w>301</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+fg=gray</panel_attributes>
+    <additional_attributes>410.0;50.0;410.0;10.0;130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
