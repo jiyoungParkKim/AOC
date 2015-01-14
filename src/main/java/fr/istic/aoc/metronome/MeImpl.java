@@ -19,30 +19,39 @@ public class MeImpl implements ME{
 	
 	private boolean running;
 	private int bpm = 140;
+	private int oldBpm = -1; 
 	private int measure = 4;
 	private int count = 0;
 	
+	
+	private void start(){
+		count = 0;
+		horloge.activatePeriodically(tickCmd, 60000/bpm);
+		running = true;
+		oldBpm = bpm;
+	}
+	private void stop(){
+		count = 0;
+		horloge.disable(tickCmd);
+		running = false;
+		oldBpm = -1;
+	}
 	@Override
-	public void setRunning(boolean b) {
-		if(running){
-			horloge.disable(null);
-			count = 0;
-		}
-		running = b;
-		if(running){
-			count = 0;
-			horloge.activatePeriodically(tickCmd, 60000/bpm);
+	public synchronized void setRunning(boolean b) {
+		if(b){
+			if(oldBpm != bpm){
+				start();
+			}
 		}else{
-			horloge.disable(null);
+			stop();
 		}
 	}
 	
+	
 	public void tick() {
-		if(running){
-			bpmEventCmd.execute();
-			if((++count % measure) == 0){
-				measureEventCmd.execute();
-			}
+		bpmEventCmd.execute();
+		if((++count % measure) == 0){
+			measureEventCmd.execute();
 		}
 	}
 	
@@ -50,10 +59,7 @@ public class MeImpl implements ME{
 	public void setBPM(int bpm) {
 		this.bpm = bpm;
 		bpmChangedCmd.execute();
-		if(running){
-			horloge.disable(null);
-			horloge.activatePeriodically(tickCmd, 60000/bpm);
-		}
+		
 	}
 	
 	@Override

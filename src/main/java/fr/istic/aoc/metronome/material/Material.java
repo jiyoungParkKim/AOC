@@ -5,7 +5,7 @@ import fr.istic.aoc.metronome.adapter.ClavierAdapter;
 import fr.istic.aoc.metronome.adapter.EmetteurSonoreAdapter;
 import fr.istic.aoc.metronome.adapter.HorlogeAdapter;
 import fr.istic.aoc.metronome.adapter.MoletteAdapter;
-import fr.istic.aoc.metronome.ui.fx.TimerImpl;
+import fr.istic.aoc.metronome.ui.fx.FxTimer;
 
 public class Material {
 
@@ -13,7 +13,7 @@ public class Material {
 	private static Molette molette = new MoletteAdapter();
 	private static Afficheur afficheur = new AfficheurAdapter();
 	private static EmetteurSonore emetteurSonore = new EmetteurSonoreAdapter();
-	private static Horloge horloge = new HorlogeAdapter(TimerImpl.getInstance());
+	private static Horloge horloge = new HorlogeAdapter(FxTimer.getInstance());
 	public static Clavier getClavier(){
 		return clavier;
 	}

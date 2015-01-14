@@ -18,7 +18,7 @@ public class ButtonAdapter implements Button, AntiAdapter {
 		this.type = type;
 		clavier.setMousePressedListener(type, fxButton);
 		clavier.setMouseReleasedListener(type, fxButton);
-		Material.getHorloge().activatePeriodically(new ReadCmd(this), 100);
+		Material.getHorloge().activatePeriodically(new ReadCmd(this), 10);
 	}
 
 	@Override

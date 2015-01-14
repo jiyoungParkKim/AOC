@@ -2,15 +2,15 @@ package fr.istic.aoc.metronome;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
-import fr.istic.aoc.metronome.ui.LED;
+import fr.istic.aoc.metronome.anti_adapter.ButtonAdapter;
+import fr.istic.aoc.metronome.anti_adapter.DisplayAdapter;
+import fr.istic.aoc.metronome.anti_adapter.SliderAdapter;
+import fr.istic.aoc.metronome.ui.ButtonType;
+import fr.istic.aoc.metronome.ui.DisplayType;
+import fr.istic.aoc.metronome.ui.SliderType;
 import fr.istic.aoc.metronome.ui.View;
-import fr.istic.aoc.metronome.ui.fx.FxButton;
-import fr.istic.aoc.metronome.ui.fx.FxLED;
-import fr.istic.aoc.metronome.ui.fx.FxSlider;
-import fr.istic.aoc.metronome.ui.fx.FxText;
 
 
 public class MockComponentsInitializer implements ComponentInitializer{
@@ -48,23 +48,17 @@ public class MockComponentsInitializer implements ComponentInitializer{
 		ctl = new Controller();
 		view = new View();
 		
-		view.setStartBtn(new FxButton(startBtn));
-		view.setStopBtn(new FxButton(stopBtn));
-		view.setIncBtn(new FxButton(speedUpBtn));
-		view.setDecBtn(new FxButton(speedDownBtn));
+		view.setStartBtn(new ButtonAdapter(ButtonType.START, startBtn));
+		view.setStopBtn(new ButtonAdapter(ButtonType.STOP, stopBtn));
+		view.setIncBtn(new ButtonAdapter(ButtonType.INC, speedUpBtn));
+		view.setDecBtn(new ButtonAdapter(ButtonType.DEC, speedDownBtn));
 		
-		view.setBpmSlider(new FxSlider(beatsSlider));
-		view.setMeasureSlider(new FxSlider(barSlider));
+		view.setBpmSlider(new SliderAdapter(SliderType.BPM, beatsSlider));
+		view.setMeasureSlider(new SliderAdapter(SliderType.MEASURE, barSlider));
 		
-		view.setBpmText(new FxText(beats));
-		view.setMeasureText(new FxText(bar));
-		view.setTempoNameText(new FxText(tempoMarking));
-		
-		LED bpmLED = new FxLED(led1, Color.AQUA);
-		view.setLed1(bpmLED);
-		
-		LED measureLED = new FxLED(led2, Color.PINK);
-		view.setLed2(measureLED);
+		view.setBpmText(new DisplayAdapter(DisplayType.BPMText, beats));
+		view.setMeasureText(new DisplayAdapter(DisplayType.MeasureText, bar));
+		view.setTempoNameText(new DisplayAdapter(DisplayType.TempoName, tempoMarking));
 		
 		ctl.init(view);
 	}

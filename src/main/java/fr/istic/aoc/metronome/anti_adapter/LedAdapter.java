@@ -1,7 +1,6 @@
 package fr.istic.aoc.metronome.anti_adapter;
 
 import javafx.scene.shape.Circle;
-import fr.istic.aoc.metronome.ConfigurationException;
 import fr.istic.aoc.metronome.adapter.AfficheurAdapter;
 import fr.istic.aoc.metronome.command.Command;
 import fr.istic.aoc.metronome.material.Material;
@@ -17,23 +16,21 @@ public class LedAdapter implements LED {
 	public LedAdapter(LEDType type, Circle led1) {
 		this.type = type;
 		afficheur.setLED(type, led1);
-	}
-
-	@Override
-	public void register(Command cmd) throws ConfigurationException {
-		this.cmd = cmd;
-	}
-
-	@Override
-	public void unRegister(Command cmd) throws ConfigurationException {
-		this.cmd = null;
-
+		cmd = new TurnOffLED();
 	}
 
 	@Override
 	public void flash() {
 		afficheur.turnOnLED(type.getValue());
 		Material.getHorloge().activateAfterDelay(cmd, 100);
+	}
+	
+	private class TurnOffLED implements Command{
+		@Override
+		public void execute() {
+			afficheur.turnOffLED(type.getValue());
+			
+		}
 	}
 
 }

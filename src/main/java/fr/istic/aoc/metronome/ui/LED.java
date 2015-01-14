@@ -1,13 +1,11 @@
 package fr.istic.aoc.metronome.ui;
 
-import fr.istic.aoc.metronome.observer.Subject;
 /**
- * LED interface to execute the flash method. 
- * This interface extends Subject interface for acting as a subject.
+ * LED interface
  * @author Jiyoung Park
  *
  */
-public interface LED extends Subject{
+public interface LED {
 	
 	/**
 	 * Flash the led.
