@@ -12,8 +12,18 @@ There are two versions :
 ### Version
 1.0.0
 
-1. Used design patterns.
+1. Design patterns.
 ![Command + Observer](design.png)
 
-2. Class diagram of Version 1.0.0
+2. Class diagram
 ![Command + Observer](class_diagram.png)
+
+### Version
+2.0.0
+
+1. Design patterens
+![Command + Observer](design2.png)
+
+2. Class diagram
+![Command + Observer](class_diagram2.png)
+
