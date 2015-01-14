@@ -11,7 +11,7 @@ import fr.istic.aoc.metronome.command.BpmSliderChangedCmd;
 import fr.istic.aoc.metronome.command.MeasureSliderChangedCmd;
 import fr.istic.aoc.metronome.ui.SliderType;
 
-public class SliderAdapterTest {
+public class SliderAdapterTest extends AdapterTestBase{
 
 	@Rule public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();
 	private double defaultBeats=140.0;
@@ -44,10 +44,16 @@ public class SliderAdapterTest {
 		SliderAdapter barSlider = new SliderAdapter(SliderType.MEASURE, fxSlider);
 		barSlider.register(new MeasureSliderChangedCmd(ctl));
 		
-		Assert.assertEquals(defaultBar / barSliderMaxValue, barSlider.getPosition(), 0);
+		assertInTimeline(new TestAdapterCommand(defaultBar / barSliderMaxValue));
 		
 		fxSlider.setValue(2);
 		Assert.assertEquals(0.2857, barSlider.getPosition(), 0.01);
+	}
+
+	
+	@Override
+	protected void doTest(double expectedValue) {
+		Assert.assertEquals(expectedValue, ctl.getView().getMeasureSlider().getPosition(), 0);	
 	}
 
 }
