@@ -1,0 +1,6 @@
+fr.istic.aoc.metronome
+fr.istic.aoc.metronome.command
+fr.istic.aoc.metronome.observer
+fr.istic.aoc.metronome.ui
+fr.istic.aoc.metronome.ui.fx
+fr.istic.aoc.metronome.utils
