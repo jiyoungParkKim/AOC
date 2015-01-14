@@ -1,5 +1,8 @@
 package fr.istic.aoc.metronome.adapter;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -32,8 +35,13 @@ public class MoletteAdapterTest {
 	@Test
 	public void setChangedListenerTest(){
 		javafx.scene.control.Slider fxSlider = new javafx.scene.control.Slider(0.0, beatsSliderMaxValue, defaultBeats);
-		madapter.setChangedListener(SliderType.BPM, fxSlider);
-		
+		fxSlider.valueProperty().addListener(new ChangeListener<Number>() {
+			double max = fxSlider.getMax();
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				madapter.slideChanged(SliderType.BPM, newValue.doubleValue() / max);
+			}
+		});
 		fxSlider.setValue(150.0);
 		Assert.assertEquals(150.0 / beatsSliderMaxValue, madapter.getPosition(SliderType.BPM.getValue()), 0.0);
 		

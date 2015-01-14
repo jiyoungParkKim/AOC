@@ -36,6 +36,10 @@ public class MeImpl implements ME{
 		running = false;
 		oldBpm = -1;
 	}
+	private void restart(){
+		stop();
+		start();
+	}
 	@Override
 	public synchronized void setRunning(boolean b) {
 		if(b){
@@ -59,7 +63,9 @@ public class MeImpl implements ME{
 	public void setBPM(int bpm) {
 		this.bpm = bpm;
 		bpmChangedCmd.execute();
-		
+		if(running){
+			restart();
+		}
 	}
 	
 	@Override

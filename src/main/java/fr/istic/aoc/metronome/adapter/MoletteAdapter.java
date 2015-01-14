@@ -1,7 +1,5 @@
 package fr.istic.aoc.metronome.adapter;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import fr.istic.aoc.metronome.material.Molette;
 import fr.istic.aoc.metronome.ui.SliderType;
 import fr.istic.aoc.metronome.utils.PropertiesReader;
@@ -27,13 +25,7 @@ public class MoletteAdapter implements Molette {
 		return positions[number];
 	}
 	
-	public void setChangedListener(SliderType type, javafx.scene.control.Slider fxSlider){
-		double max = fxSlider.getMax();
-		fxSlider.valueProperty().addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				positions[type.getValue()] = newValue.doubleValue() / max;
-			}
-		});
+	public void slideChanged(SliderType type, double position){
+		positions[type.getValue()] = position;
 	}
 }

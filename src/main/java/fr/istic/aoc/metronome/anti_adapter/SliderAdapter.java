@@ -1,5 +1,7 @@
 package fr.istic.aoc.metronome.anti_adapter;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import fr.istic.aoc.metronome.adapter.MoletteAdapter;
 import fr.istic.aoc.metronome.command.Command;
 import fr.istic.aoc.metronome.command.ReadCmd;
@@ -14,12 +16,21 @@ public class SliderAdapter implements Slider, AntiAdapter{
 	private Command cmd;
 	private int count = 0;
 	private double oldValue = 0.0;
-	
+	private double nv = 0.0;
 	public SliderAdapter(SliderType type, javafx.scene.control.Slider fxSlider){
 		this.fxSlider = fxSlider;
 		this.type = type;
 		this.oldValue = fxSlider.getValue();
-		molette.setChangedListener(type, fxSlider);
+		// add listener
+		fxSlider.valueProperty().addListener(new ChangeListener<Number>() {
+			double max = fxSlider.getMax();
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				nv = newValue.doubleValue();
+				molette.slideChanged(type, newValue.doubleValue() / max);
+			}
+		});
+		
 		Material.getHorloge().activatePeriodically(new ReadCmd(this), 100);
 	}
 
@@ -35,9 +46,11 @@ public class SliderAdapter implements Slider, AntiAdapter{
 
 	@Override
 	public void read() {
-		if(molette.getPosition(type.getValue()) != oldValue && count > 10){
+	// I comment this option because it recognize too slowly the movement 
+	//	if(nv != oldValue && count > 10){
+		if(nv != oldValue){
 			count = 0;
-			oldValue = molette.getPosition(type.getValue());
+			oldValue = nv;
 			cmd.execute();
 		}
 		count++;
