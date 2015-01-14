@@ -20,6 +20,9 @@ public class FxTimer implements Timer{
 	private static Timeline timeline;
 	private static Timer timer;
 	
+	/**
+	 * Command class's hashcode , KeyFrame's index
+	 */
 	private Map<Integer, Integer> jobs = new HashMap<Integer, Integer>();
 	
 	public static Timer getInstance(){
@@ -33,26 +36,38 @@ public class FxTimer implements Timer{
 		timeline = new Timeline();
 	}
 	
+	/**
+	 * Verifies the KeyFrames is clean. If the same task(command) is found in the KeyFrames with a different time
+	 * duration, remove it to make the timeline ready to add a new task.
+	 * @param c Command to execute
+	 * @param delayInMillis time duration
+	 * @return true if the KeyFrame is clean
+	 */
 	private boolean verifyTimelineJobs(Command c, int delayInMillis){
 		Integer index = jobs.get(c.hashCode());
 		if(index != null){
 			KeyFrame k = timeline.getKeyFrames().get(index);
 			if(k.getTime().toMillis() == delayInMillis){
-				return false;
+				return false;// This task is already exist in the timeline with same duration
 			}else{
-				return removeOneJob(c.hashCode());
+				return removeOneJob(c.hashCode());// Remove this task to replace it with a new duration
 			}
-		}else{
+		}else{// No same task so we are ready to add a new one
 			return true;
 		}
 	}
 	
+	/**
+	 * Removes a command(job) from the KeyFrame and the jobs.
+	 * @param jobKey command's hashcode. 
+	 * @return true if the job(command) is removed safely
+	 */
 	private synchronized boolean removeOneJob(int jobKey){
 		int curFCnt = timeline.getKeyFrames().size();
 		int curJCnt = jobs.size();
-		Integer index = jobs.get(jobKey);
-		if(index != null){
-			KeyFrame k = timeline.getKeyFrames().get(index);
+		Integer keyFrameIndex = jobs.get(jobKey);
+		if(keyFrameIndex != null){
+			KeyFrame k = timeline.getKeyFrames().get(keyFrameIndex);
 			jobs.remove(jobKey);
 			if(timeline.getStatus() == Status.RUNNING){
 				timeline.stop();
@@ -63,12 +78,17 @@ public class FxTimer implements Timer{
 			int jobSize = jobs.size();
 			int fSize = timeline.getKeyFrames().size();
 			
-			boolean flag = (curFCnt - fSize) == 1 &&  (curJCnt - jobSize) == 1;
-			return flag;
+			return (curFCnt - fSize) == 1 &&  (curJCnt - jobSize) == 1;
 		}
 		return false;
 	}
 	
+	/**
+	 * Add a new task on the KeyFrame
+	 * @param c
+	 * @param delayInMillis
+	 * @return
+	 */
 	private synchronized boolean addOneJob(Command c, int delayInMillis){
 		timeline.stop();
 		KeyFrame k = new KeyFrame(
@@ -98,7 +118,6 @@ public class FxTimer implements Timer{
 		boolean flag = verifyTimelineJobs(c, delayInMillis);
 		if(flag){
 			addOneJob(c, delayInMillis);
-			
 		}
 	}
 
@@ -120,7 +139,7 @@ public class FxTimer implements Timer{
 	}
 
 	/**
-	 * Stop this timer
+	 * Removes the given command from the jobs and the KeyFrames
 	 */
 	@Override
 	public  void disable(Command c) {

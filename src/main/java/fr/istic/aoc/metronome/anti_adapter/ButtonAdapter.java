@@ -1,5 +1,7 @@
 package fr.istic.aoc.metronome.anti_adapter;
 
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import fr.istic.aoc.metronome.adapter.ClavierAdapter;
 import fr.istic.aoc.metronome.command.Command;
 import fr.istic.aoc.metronome.command.ReadCmd;
@@ -16,8 +18,18 @@ public class ButtonAdapter implements Button, AntiAdapter {
 	
 	public ButtonAdapter(ButtonType type, javafx.scene.control.Button fxButton){
 		this.type = type;
-		clavier.setMousePressedListener(type, fxButton);
-		clavier.setMouseReleasedListener(type, fxButton);
+		fxButton.setOnMousePressed(new EventHandler<MouseEvent>(){
+			@Override
+			public void handle(MouseEvent event) {
+				clavier.mousePresed(type);
+			}
+		});
+		fxButton.setOnMouseReleased(new EventHandler<MouseEvent>(){
+			@Override
+			public void handle(MouseEvent event) {
+				clavier.mouseReleased(type);
+			}
+		});
 		Material.getHorloge().activatePeriodically(new ReadCmd(this), 10);
 	}
 
